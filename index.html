@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroFox - Modern Brand Identity & Logo Showcase</title>
+    <title>AeroFox | Premium Interactive Brand Identity & Sandbox</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Ambient Background Glows -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -17,216 +21,378 @@
                 <svg class="nav-logo" viewBox="0 0 100 100" width="36" height="36">
                     <circle cx="50" cy="50" r="42" fill="none" stroke="#a855f7" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="0" />
                     <circle cx="50" cy="50" r="42" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="131" />
-                    <!-- Fox Head Line Art -->
-                    <path d="M 32,50 C 32,38 42,32 55,32 C 68,32 78,42 78,50 C 78,54 75,58 72,56 C 68,54 62,56 60,50 C 58,45 54,42 50,42 C 46,42 42,45 40,50" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    <circle cx="50" cy="50" r="4" fill="#ffffff" />
+                    <!-- Fox Icon -->
+                    <path d="M 35,50 C 35,40 45,35 55,35 C 65,35 73,42 73,50 C 73,53 71,56 68,55 C 64,54 60,55 59,50" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
                 </svg>
                 <span class="brand-name">AERO<span>FOX</span></span>
             </div>
             <div class="nav-links">
-                <a href="#hero">Overview</a>
-                <a href="#customizer">Interactive Logo</a>
-                <a href="#specifications">Specs</a>
-                <a href="#mockups">Mockups</a>
+                <a href="#hero">Showcase</a>
+                <a href="#customizer">Interactive Sandbox</a>
+                <a href="#mockups">Live Mockups</a>
+                <a href="#specifications">Guidelines</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle-icon" id="quickThemeToggle" title="Toggle Theme">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="#customizer" class="btn btn-nav">Launch Editor</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
-        <div class="hero-bg-glow"></div>
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="badge">Brand Reveal</div>
-                <h1>The Future of Identity is <span class="gradient-text">Antigravity</span></h1>
-                <p class="subtitle">An Android-inspired, minimalist aesthetic featuring sharp geometry, high contrast, and dynamic split-color framing. Designed for clean recognition at any scale.</p>
+                <div class="badge">Next-Gen Android Aesthetic</div>
+                <h1>Elevated Minimalist <span class="gradient-text">Brand Systems</span></h1>
+                <p class="subtitle">A stunning fusion of clean Android-style geometry, vibrant duotone ring accents, and sharp animal line art. Explore the interactive sandbox to customize, preview on merchandise, and export production-ready vector assets.</p>
                 <div class="hero-actions">
-                    <a href="#customizer" class="btn btn-primary">Customize Logo</a>
-                    <a href="#specifications" class="btn btn-secondary">Brand Guidelines</a>
+                    <a href="#customizer" class="btn btn-primary">Open Sandbox</a>
+                    <a href="#mockups" class="btn btn-secondary">Preview Mockups</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-val">4</span>
+                        <span class="stat-label">Vector Silhouettes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-val">Infinite</span>
+                        <span class="stat-label">Color Schemes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-val">100%</span>
+                        <span class="stat-label">SVG Vector Output</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="glass-card logo-card">
-                    <div class="logo-display-wrapper">
-                        <!-- We load the generated image here -->
-                        <img src="vixen_fox_logo_1782631615289.jpg" alt="AeroFox Generated Logo" class="generated-logo-img">
+                <div class="glass-card main-showcase-card">
+                    <div class="tabs-header">
+                        <span class="tab-indicator active" data-tab="modern">AeroFox v2</span>
+                        <span class="tab-indicator" data-tab="concept">Vixen Concept</span>
                     </div>
-                    <div class="card-footer">
-                        <span class="tag">AI Generated Asset</span>
-                        <span class="version">v1.0.0</span>
+                    <div class="showcase-display">
+                        <!-- Dynamic Premium Logo Showcase -->
+                        <div class="interactive-preview-container" id="mainLogoShowcase">
+                            <!-- We render an animated variant of the logo here -->
+                            <svg viewBox="0 0 200 200" width="100%" height="100%">
+                                <circle cx="100" cy="100" r="85" fill="none" stroke="url(#showcaseGrad)" stroke-width="12" />
+                                <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                    <path d="M 60,110 C 60,82 85,60 115,60 M 115,60 L 135,40 L 130,72 M 130,72 C 145,82 162,92 165,102 L 140,107 L 115,112 M 115,112 C 95,117 75,132 65,142" />
+                                    <circle cx="112" cy="85" r="7" fill="#ffffff" stroke="none" />
+                                </g>
+                                <defs>
+                                    <linearGradient id="showcaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#a855f7" />
+                                        <stop offset="50%" stop-color="#3b82f6" />
+                                        <stop offset="100%" stop-color="#ffffff" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="showcase-meta">
+                        <div class="meta-label">
+                            <strong>Signature Badge</strong>
+                            <span>Vector Line Art Geometry</span>
+                        </div>
+                        <div class="pulse-indicator">
+                            <span class="pulse-dot"></span>
+                            <span>Interactive</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Customizer Section -->
+    <!-- Sandbox Customizer Section -->
     <section id="customizer" class="customizer-section">
         <div class="container">
             <div class="section-header">
-                <h2>Interactive Logo Sandbox</h2>
-                <p>Experiment with colors, line-weights, and themes to see how the Android-style badge adapts.</p>
-            </div>
-            
-            <div class="customizer-grid">
-                <div class="glass-card canvas-card">
-                    <div class="canvas-container" id="logoCanvas">
-                        <!-- Dynamic SVG Logo -->
-                        <svg id="interactiveLogo" viewBox="0 0 200 200" width="100%" height="100%">
-                            <defs>
-                                <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.8"/>
-                                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Background Glow (optional, toggled via code) -->
-                            <circle cx="100" cy="100" r="90" fill="url(#glowGrad)" opacity="0.05" class="svg-glow" />
-                            
-                            <!-- Outer Rings (Split Color) -->
-                            <!-- Accent colored part (top half) -->
-                            <path id="accentRing" d="M 20,100 A 80,80 0 1,1 180,100" fill="none" stroke="var(--accent-color)" stroke-width="12" stroke-linecap="round" />
-                            <!-- White/Light part (bottom half) -->
-                            <path id="baseRing" d="M 180,100 A 80,80 0 0,1 20,100" fill="none" stroke="var(--base-stroke-color)" stroke-width="12" stroke-linecap="round" />
-                            
-                            <!-- Sleek Fox Head Profile -->
-                            <g id="foxHead" stroke="var(--base-stroke-color)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                <!-- Ears and head curve -->
-                                <path d="M 60,110 C 60,85 85,65 115,65" />
-                                <path d="M 115,65 L 135,45 L 130,75" />
-                                <!-- Snout and mouth -->
-                                <path d="M 130,75 C 145,85 160,95 165,105 L 140,110 L 115,115" />
-                                <!-- Cheeks and neck -->
-                                <path d="M 115,115 C 95,120 75,135 65,145" />
-                                <!-- Eye detail -->
-                                <circle cx="110" cy="90" r="8" fill="var(--base-stroke-color)" stroke="none" />
-                                <!-- Snout dots -->
-                                <circle cx="132" cy="100" r="3" fill="var(--base-stroke-color)" stroke="none" />
-                                <circle cx="140" cy="102" r="3" fill="var(--base-stroke-color)" stroke="none" />
-                            </g>
-                        </svg>
-                    </div>
-                </div>
-
-                <div class="glass-card controls-card">
-                    <h3>Design System Controls</h3>
-                    
-                    <div class="control-group">
-                        <label>Accent Ring Color</label>
-                        <div class="color-options">
-                            <button class="color-dot active" data-color="#a855f7" style="background: #a855f7;"></button>
-                            <button class="color-dot" data-color="#00f2fe" style="background: #00f2fe;"></button>
-                            <button class="color-dot" data-color="#ff007f" style="background: #ff007f;"></button>
-                            <button class="color-dot" data-color="#39ff14" style="background: #39ff14;"></button>
-                            <button class="color-dot" data-color="#ffb703" style="background: #ffb703;"></button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="strokeWidth">Stroke Weight: <span id="strokeVal">12px</span></label>
-                        <input type="range" id="strokeWidth" min="6" max="20" value="12">
-                    </div>
-
-                    <div class="control-group">
-                        <label>Background Contrast</label>
-                        <div class="theme-options">
-                            <button class="theme-btn active" data-theme="dark">Midnight Dark</button>
-                            <button class="theme-btn" data-theme="light">Alabaster Light</button>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label>Glow Effect</label>
-                        <label class="switch">
-                            <input type="checkbox" id="glowToggle" checked>
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-
-                    <button class="btn btn-primary btn-block" id="downloadSVG">Export SVG Asset</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Specifications Section -->
-    <section id="specifications" class="specs-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Design Specifications</h2>
-                <p>Grid alignments, geometry rules, and proportions of the AeroFox brand identity.</p>
-            </div>
-            
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-num">01</div>
-                    <h4>Perfect Geometry</h4>
-                    <p>The enclosing circle uses an exact 80px radius with symmetrical split points aligned precisely to the horizontal axis.</p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-num">02</div>
-                    <h4>Contrast Split</h4>
-                    <p>The accent color covers 180 degrees of the upper arc to symbolise sunrise/growth, while the white/base color completes the stable foundation.</p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-num">03</div>
-                    <h4>Organic Contours</h4>
-                    <p>The interior fox profile uses continuous bezier curves, matching the aesthetic of classic Android system badges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mockups & Applications -->
-    <section id="mockups" class="mockups-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Product Applications</h2>
-                <p>Visualizing the brand presence across multiple platforms and mediums.</p>
+                <div class="mini-badge">Playground</div>
+                <h2>Interactive Logo Customizer</h2>
+                <p>Swap vector profiles, adjust styles, refine lines, and experience dynamic changes across dark and light palettes.</p>
             </div>
 
-            <div class="mockup-gallery">
-                <div class="glass-card mockup-item">
-                    <div class="mockup-preview phone-preview">
-                        <div class="phone-screen">
-                            <div class="phone-status">12:00</div>
-                            <div class="app-icon-wrapper">
-                                <div class="app-icon">
-                                    <svg viewBox="0 0 200 200" width="64" height="64">
-                                        <path d="M 20,100 A 80,80 0 1,1 180,100" fill="none" stroke="#a855f7" stroke-width="12" stroke-linecap="round" />
-                                        <path d="M 180,100 A 80,80 0 0,1 20,100" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" />
-                                        <g stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                            <path d="M 60,110 C 60,85 85,65 115,65" />
-                                            <path d="M 115,65 L 135,45 L 130,75" />
-                                            <path d="M 130,75 C 145,85 160,95 165,105 L 140,110 L 115,115" />
-                                            <path d="M 115,115 C 95,120 75,135 65,145" />
-                                            <circle cx="110" cy="90" r="8" fill="#ffffff" stroke="none" />
-                                        </g>
-                                    </svg>
-                                </div>
-                                <span class="app-label">AeroFox</span>
-                            </div>
-                        </div>
-                    </div>
-                    <h4>Mobile Launcher Icon</h4>
-                </div>
+            <div class="customizer-layout">
+                <!-- Canvas Area -->
+                <div class="canvas-wrapper">
+                    <div class="glass-card canvas-card" id="logoCanvas">
+                        <div class="canvas-glow" id="canvasGlow"></div>
+                        <div class="svg-container">
+                            <svg id="sandboxLogo" viewBox="0 0 200 200" width="100%" height="100%">
+                                <defs>
+                                    <!-- Neon Radial Glow -->
+                                    <radialGradient id="neonRadial" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <!-- Glow Background -->
+                                <circle id="svgGlowCircle" cx="100" cy="100" r="95" fill="url(#neonRadial)" opacity="0.8" style="transition: all 0.3s;" />
+                                
+                                <!-- Outer Ring Split (Standard split or customizable) -->
+                                <path id="sandboxAccentRing" d="M 20,100 A 80,80 0 1,1 180,100" fill="none" stroke="var(--accent-color)" stroke-width="12" stroke-linecap="round" style="transition: stroke 0.3s, stroke-width 0.2s;" />
+                                <path id="sandboxBaseRing" d="M 180,100 A 80,80 0 0,1 20,100" fill="none" stroke="var(--base-stroke-color)" stroke-width="12" stroke-linecap="round" style="transition: stroke 0.3s, stroke-width 0.2s;" />
 
-                <div class="glass-card mockup-item">
-                    <div class="mockup-preview apparel-preview">
-                        <div class="tshirt-graphic">
-                            <svg viewBox="0 0 200 200" width="120" height="120">
-                                <path d="M 20,100 A 80,80 0 1,1 180,100" fill="none" stroke="#a855f7" stroke-width="12" stroke-linecap="round" />
-                                <path d="M 180,100 A 80,80 0 0,1 20,100" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" />
-                                <g stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                    <path d="M 60,110 C 60,85 85,65 115,65" />
-                                    <path d="M 115,65 L 135,45 L 130,75" />
-                                    <path d="M 130,75 C 145,85 160,95 165,105 L 140,110 L 115,115" />
-                                    <path d="M 115,115 C 95,120 75,135 65,145" />
-                                    <circle cx="110" cy="90" r="8" fill="#ffffff" stroke="none" />
+                                <!-- Dynamic Animal Silhouette Path Groups -->
+                                <g id="animalPaths">
+                                    <!-- Fox Path (Default) -->
+                                    <g id="pathFox" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                                        <path d="M 60,110 C 60,85 85,65 115,65" />
+                                        <path d="M 115,65 L 135,45 L 130,75" />
+                                        <path d="M 130,75 C 145,85 160,95 165,105 L 140,110 L 115,115" />
+                                        <path d="M 115,115 C 95,120 75,135 65,145" />
+                                        <circle cx="110" cy="90" r="8" fill="var(--base-stroke-color)" stroke="none" />
+                                    </g>
+                                    
+                                    <!-- Owl Path (Hidden by default) -->
+                                    <g id="pathOwl" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
+                                        <!-- Owl facial contours -->
+                                        <path d="M 70,80 C 70,60 85,50 100,50 C 115,50 130,60 130,80" />
+                                        <path d="M 70,80 C 70,110 85,125 100,125 C 115,125 130,110 130,80" />
+                                        <!-- Eyes -->
+                                        <circle cx="88" cy="85" r="10" />
+                                        <circle cx="88" cy="85" r="4" fill="var(--base-stroke-color)" />
+                                        <circle cx="112" cy="85" r="10" />
+                                        <circle cx="112" cy="85" r="4" fill="var(--base-stroke-color)" />
+                                        <!-- Beak -->
+                                        <path d="M 100,90 L 96,102 L 104,102 Z" fill="var(--base-stroke-color)" />
+                                        <!-- Feather tufts -->
+                                        <path d="M 75,55 L 63,42 L 80,50" />
+                                        <path d="M 125,55 L 137,42 L 120,50" />
+                                    </g>
+
+                                    <!-- Wolf Path (Hidden by default) -->
+                                    <g id="pathWolf" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
+                                        <!-- Geometric/Sharp Wolf -->
+                                        <path d="M 55,100 L 75,60 L 95,50 L 110,65 L 135,55 L 130,80" />
+                                        <path d="M 130,80 L 155,95 L 140,105 L 115,105 L 85,135 L 55,100 Z" />
+                                        <!-- Eye -->
+                                        <polygon points="105,78 115,75 112,83" fill="var(--base-stroke-color)" stroke="none" />
+                                    </g>
+
+                                    <!-- Cyber Cat Path (Hidden by default) -->
+                                    <g id="pathCat" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
+                                        <path d="M 60,120 C 60,90 75,70 100,70 C 125,70 140,90 140,120" />
+                                        <!-- Pointy ears -->
+                                        <path d="M 75,73 L 65,40 L 90,68" />
+                                        <path d="M 125,73 L 135,40 L 110,68" />
+                                        <!-- Whiskers -->
+                                        <path d="M 50,110 L 80,112" />
+                                        <path d="M 48,122 L 78,120" />
+                                        <path d="M 150,110 L 120,112" />
+                                        <path d="M 152,122 L 122,120" />
+                                        <!-- Glowing slit eyes -->
+                                        <ellipse cx="88" cy="90" rx="8" ry="4" />
+                                        <ellipse cx="112" cy="90" rx="8" ry="4" />
+                                        <line x1="88" y1="86" x2="88" y2="94" stroke-width="3" />
+                                        <line x1="112" y1="86" x2="112" y2="94" stroke-width="3" />
+                                    </g>
                                 </g>
                             </svg>
                         </div>
                     </div>
-                    <h4>Minimalist Apparel</h4>
+                </div>
+
+                <!-- Customizer Sidebar / Controls -->
+                <div class="glass-card controls-wrapper">
+                    <h3>Visual Configuration</h3>
+                    
+                    <!-- 1. Select Silhouette -->
+                    <div class="control-group">
+                        <label>Vector Silhouette</label>
+                        <div class="silhouette-options">
+                            <button class="silhouette-btn active" data-animal="fox">Fox</button>
+                            <button class="silhouette-btn" data-animal="owl">Owl</button>
+                            <button class="silhouette-btn" data-animal="wolf">Wolf</button>
+                            <button class="silhouette-btn" data-animal="cat">Cat</button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Accent Ring Color -->
+                    <div class="control-group">
+                        <label>
+                            <span>Accent Color</span>
+                            <span class="value-indicator" id="colorHex">#a855f7</span>
+                        </label>
+                        <div class="color-options-row">
+                            <div class="preset-dots">
+                                <button class="color-dot active" data-color="#a855f7" style="background: #a855f7;"></button>
+                                <button class="color-dot" data-color="#3b82f6" style="background: #3b82f6;"></button>
+                                <button class="color-dot" data-color="#10b981" style="background: #10b981;"></button>
+                                <button class="color-dot" data-color="#f59e0b" style="background: #f59e0b;"></button>
+                                <button class="color-dot" data-color="#ef4444" style="background: #ef4444;"></button>
+                            </div>
+                            <div class="custom-color-picker-wrapper">
+                                <input type="color" id="customColorPicker" value="#a855f7">
+                                <span class="picker-label">Custom</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Line Weight -->
+                    <div class="control-group">
+                        <label>
+                            <span>Border Stroke Weight</span>
+                            <span class="value-indicator" id="strokeValLabel">12px</span>
+                        </label>
+                        <input type="range" id="strokeRange" min="6" max="22" value="12">
+                    </div>
+
+                    <!-- 4. Style Mode (Outline vs Solid Badge) -->
+                    <div class="control-group">
+                        <label>Badge Fill Style</label>
+                        <div class="style-toggle-buttons">
+                            <button class="style-toggle-btn active" data-style="outline">Outline Badge</button>
+                            <button class="style-toggle-btn" data-style="solid">Solid Glass Badge</button>
+                        </div>
+                    </div>
+
+                    <!-- 5. Interactive Glow & Contrast Options -->
+                    <div class="row-controls">
+                        <div class="control-group flex-1">
+                            <label>Neon Ambient Glow</label>
+                            <label class="switch">
+                                <input type="checkbox" id="glowOptionToggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="control-group flex-1">
+                            <label>Canvas Mode</label>
+                            <div class="canvas-theme-toggle">
+                                <button class="canvas-theme-btn active" data-theme="dark" title="Dark Contrast">Dark</button>
+                                <button class="canvas-theme-btn" data-theme="light" title="Light Contrast">Light</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-buttons-group">
+                        <button class="btn btn-primary" id="downloadLogoBtn">Download SVG</button>
+                        <button class="btn btn-secondary" id="copyCodeBtn">Copy SVG Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mockups & Products Showcase -->
+    <section id="mockups" class="mockups-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="mini-badge">Integration</div>
+                <h2>Dynamic Product Applications</h2>
+                <p>Watch the mockups update in real-time as you customize the logo style above.</p>
+            </div>
+
+            <div class="mockup-grid">
+                <!-- Mobile Screen Mockup -->
+                <div class="glass-card mockup-card">
+                    <div class="mockup-header">
+                        <span class="mockup-title">Android Launcher Icon</span>
+                        <span class="mockup-dot"></span>
+                    </div>
+                    <div class="mockup-body phone-bg">
+                        <div class="mockup-phone">
+                            <div class="phone-status-bar">
+                                <span>09:41</span>
+                                <div class="status-icons">📶 🔋</div>
+                            </div>
+                            <div class="launcher-grid">
+                                <div class="launcher-item">
+                                    <div class="dynamic-icon-preview" id="phoneIcon">
+                                        <!-- Render custom SVG icon here -->
+                                    </div>
+                                    <span class="icon-label">AeroFox</span>
+                                </div>
+                                <div class="launcher-item dummy">
+                                    <div class="dummy-icon" style="background: #2563eb;">💬</div>
+                                    <span class="icon-label">Chat</span>
+                                </div>
+                                <div class="launcher-item dummy">
+                                    <div class="dummy-icon" style="background: #059669;">📸</div>
+                                    <span class="icon-label">Camera</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Premium Apparel Mockup -->
+                <div class="glass-card mockup-card">
+                    <div class="mockup-header">
+                        <span class="mockup-title">Minimalist Streetwear</span>
+                        <span class="mockup-dot"></span>
+                    </div>
+                    <div class="mockup-body apparel-bg">
+                        <div class="tshirt-texture">
+                            <div class="dynamic-graphic-preview" id="tshirtGraphic">
+                                <!-- Dynamic Graphic Overlay -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Card Mockup -->
+                <div class="glass-card mockup-card full-width-mockup">
+                    <div class="mockup-header">
+                        <span class="mockup-title">Smart NFC Business Card</span>
+                        <span class="mockup-dot"></span>
+                    </div>
+                    <div class="mockup-body card-bg">
+                        <div class="nfc-card" id="nfcCardDisplay">
+                            <div class="card-logo-area" id="cardLogo">
+                                <!-- Dynamic Logo -->
+                            </div>
+                            <div class="card-details">
+                                <span class="card-brand">AEROFOX LABS</span>
+                                <span class="card-nfc-label">NFC Tap to Scan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications / Grid Guidelines -->
+    <section id="specifications" class="specs-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="mini-badge">System</div>
+                <h2>Geometry & Specifications</h2>
+                <p>Strict rules governing the AeroFox visual design system.</p>
+            </div>
+
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-icon">📐</div>
+                    <h4>Angle Split Rules</h4>
+                    <p>Accent ring covers exactly 180 degrees of the upper arc (from 9 o'clock to 3 o'clock) mirroring Android's visual system state division.</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">⚡</div>
+                    <h4>Golden Curve Ratio</h4>
+                    <p>Line-art profile features bezier handles matching the exact Golden Ratio (1:1.618) to ensure smooth curve progression under low-resolution scaling.</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">👁️</div>
+                    <h4>Focal Anchoring</h4>
+                    <p>The creature's eye detail sits perfectly on the 100px vertical center and 110px horizontal axis coordinates to anchor user attention.</p>
                 </div>
             </div>
         </div>
@@ -235,14 +401,20 @@
     <!-- Footer -->
     <footer>
         <div class="container footer-container">
-            <p>&copy; 2026 AeroFox Brand Portal. Part of the Antigravity System.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Contact</a>
+            <div class="footer-left">
+                <span class="footer-logo">AERO<span>FOX</span></span>
+                <p>Next-gen design systems for modern digital ecosystems.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#hero">Top</a>
+                <a href="#customizer">Customizer</a>
+                <a href="https://github.com/poteuxx/aerofox" target="_blank">GitHub Repository</a>
             </div>
         </div>
     </footer>
+
+    <!-- Toast Notification for Copy Code -->
+    <div id="toastNotification" class="toast">Code copied to clipboard!</div>
 
     <script src="script.js"></script>
 </body>
