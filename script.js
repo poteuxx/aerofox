@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let tabCounter = 1;
 
     // DOM Elements - Theme Builder
-    const silhouetteButtons = document.querySelectorAll('.silhouette-btn');
     const colorDots = document.querySelectorAll('.color-dot');
     const customColorPicker = document.getElementById('customColorPicker');
     const colorHexLabel = document.getElementById('colorHex');
@@ -39,12 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sandboxAccentRing = document.getElementById('sandboxAccentRing');
     const sandboxBaseRing = document.getElementById('sandboxBaseRing');
 
-    const animalPaths = {
-        fox: document.getElementById('pathFox'),
-        owl: document.getElementById('pathOwl'),
-        wolf: document.getElementById('pathWolf'),
-        cat: document.getElementById('pathCat')
-    };
+    const pathFox = document.getElementById('pathFox');
 
     // DOM Elements - Simulated IDE & Console
     const simExecute = document.getElementById('simExecute');
@@ -144,15 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sandboxBaseRing.setAttribute('stroke-width', state.strokeWidth);
 
         const innerStroke = Math.max(4, Math.round(state.strokeWidth * 0.6));
-        Object.values(animalPaths).forEach(group => {
-            if (group) group.setAttribute('stroke-width', innerStroke);
-        });
-
-        Object.entries(animalPaths).forEach(([key, element]) => {
-            if (element) {
-                element.style.display = key === state.animal ? 'block' : 'none';
-            }
-        });
+        if (pathFox) pathFox.setAttribute('stroke-width', innerStroke);
 
         if (state.badgeStyle === 'solid') {
             sandboxAccentRing.setAttribute('fill', state.accentColor);
@@ -487,16 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Theme Builder Listeners
-    silhouetteButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            silhouetteButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            state.animal = btn.getAttribute('data-animal');
-            updateCustomizer();
-            playTone(700, 0.08);
-        });
-    });
-
     colorDots.forEach(dot => {
         dot.addEventListener('click', () => {
             state.accentColor = dot.getAttribute('data-color');
@@ -538,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
 :root {
     --accent-color: ${state.accentColor};
     --border-weight: ${state.strokeWidth}px;
-    --branding-icon: "${state.animal}";
+    --branding-icon: "fox";
     --frosted-badge: ${state.badgeStyle === 'solid' ? 'true' : 'false'};
     --client-theme: "${isLight ? 'light' : 'dark'}";
 }`;
@@ -555,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
             themeName: "AeroFox Custom",
             accentColor: state.accentColor,
             borderWeight: state.strokeWidth,
-            logoIcon: state.animal,
+            logoIcon: "fox",
             badgeStyle: state.badgeStyle,
             isLightTheme: isLight
         };
