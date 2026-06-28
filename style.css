@@ -1060,3 +1060,317 @@ footer {
         display: none;
     }
 }
+
+/* Monaco Code Editor styles */
+.executor-layout-preview {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    background: #09090c;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    height: 180px;
+    margin-top: 15px;
+}
+
+.code-editor-area {
+    display: flex;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    padding: 12px;
+    overflow-y: auto;
+    background: #09090c;
+    color: #e2e8f0;
+}
+
+.line-numbers {
+    display: flex;
+    flex-direction: column;
+    color: #475569;
+    text-align: right;
+    padding-right: 12px;
+    user-select: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.code-lines {
+    padding-left: 12px;
+    outline: none;
+    white-space: pre;
+    flex: 1;
+    overflow-x: auto;
+}
+
+.keyword { color: #f43f5e; font-weight: bold; }
+.string { color: #10b981; }
+.comment { color: #64748b; font-style: italic; }
+.number { color: #f59e0b; }
+.function { color: #3b82f6; }
+
+.executor-sidebar {
+    background: #0d0d12;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.script-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.script-list li {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    padding: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.script-list li.active, .script-list li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+}
+
+/* Executor Actions Bar */
+.window-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.dot-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot-btn.close { background: #ef4444; }
+.dot-btn.min { background: #f59e0b; }
+.dot-btn.max { background: #10b981; }
+
+.executor-tab {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.executor-actions-row {
+    display: flex;
+    gap: 8px;
+}
+
+.exec-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--current-border);
+    color: var(--current-text);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.exec-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+}
+
+.exec-btn.exec-primary {
+    background: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+}
+
+/* Console Output Box */
+.console-output-card {
+    margin-top: 30px;
+    padding: 20px;
+    background: #09090c;
+}
+
+.console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.console-clear-btn {
+    background: none;
+    border: none;
+    color: #f43f5e;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.console-logs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 120px;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.log-line { color: #cbd5e1; }
+.log-line.system { color: #3b82f6; }
+.log-line.error { color: #ef4444; }
+.log-line.success { color: #10b981; }
+
+/* Script Hub Explorer Search/Categories */
+.scripthub-explorer {
+    margin-top: 40px;
+}
+
+.explorer-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+#searchScripts {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--current-border);
+    padding: 14px 20px;
+    border-radius: 14px;
+    color: var(--current-text);
+    outline: none;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+#searchScripts:focus {
+    border-color: var(--accent-color);
+}
+
+#categoryFilter {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--current-border);
+    padding: 14px 20px;
+    border-radius: 14px;
+    color: var(--current-text);
+    outline: none;
+    font-size: 0.9rem;
+}
+
+/* Script Card Layout */
+.script-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.script-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.script-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.script-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    background: rgba(168, 85, 247, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.script-downloads {
+    font-size: 0.7rem;
+    color: var(--current-muted);
+}
+
+.script-card h3 {
+    font-size: 1.2rem;
+}
+
+.script-card p {
+    font-size: 0.85rem;
+    color: var(--current-muted);
+    line-height: 1.5;
+    flex: 1;
+}
+
+.script-card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn-sm {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+/* Creator Form styles */
+.creator-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--current-muted);
+}
+
+.form-group input, .form-group select {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--current-border);
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: var(--current-text);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--accent-color);
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px;
+}
+

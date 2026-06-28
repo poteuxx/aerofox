@@ -1,15 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // State management
+    // Application States
     const state = {
         animal: 'fox',
         accentColor: '#a855f7',
         strokeWidth: 12,
-        badgeStyle: 'outline', // 'outline' | 'solid'
+        badgeStyle: 'outline',
         glowEnabled: true,
-        canvasTheme: 'dark' // 'dark' | 'light'
+        canvasTheme: 'dark',
+        isInjected: false,
+        isInjecting: false
     };
 
-    // DOM Elements
+    // Tab Files Content Database
+    const tabFiles = {
+        main: `local AeroFox = "Ready!"\nprint(AeroFox)\n-- Loaded integrated Cloud Script Hub\nloadstring(game:HttpGet("https://api.aerofox.xyz/hub"))()\nfireclickdetector(workspace.MainPart.ClickDetector)\nsetfpscap(240)`,
+        esp: `-- Advanced ESP Configuration\nlocal ESP = loadstring(game:HttpGet("https://api.aerofox.xyz/esp"))()\nESP.Boxes = true\nESP.Tracers = true\nESP.Names = true\nprint("AeroFox ESP Loaded")`,
+        fly: `-- Fly Hack Tool\nlocal Players = game:GetService("Players")\nlocal LocalPlayer = Players.LocalPlayer\nlocal Character = LocalPlayer.Character\nprint("Fly bypass activated. Speed = 50")`
+    };
+    let activeTabId = 'main';
+    let tabCounter = 1;
+
+    // DOM Elements - Theme Builder
     const silhouetteButtons = document.querySelectorAll('.silhouette-btn');
     const colorDots = document.querySelectorAll('.color-dot');
     const customColorPicker = document.getElementById('customColorPicker');
@@ -17,12 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const strokeRange = document.getElementById('strokeRange');
     const strokeValLabel = document.getElementById('strokeValLabel');
     const styleToggleButtons = document.querySelectorAll('.style-toggle-btn');
-    const glowToggle = document.getElementById('glowOptionToggle');
-    const canvasThemeButtons = document.querySelectorAll('.canvas-theme-btn');
-    const logoCanvas = document.getElementById('logoCanvas');
-    const canvasGlow = document.getElementById('canvasGlow');
-    
-    // Export actions
     const downloadLogoBtn = document.getElementById('downloadLogoBtn');
     const copyCodeBtn = document.getElementById('copyCodeBtn');
     const toast = document.getElementById('toastNotification');
@@ -34,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sandboxAccentRing = document.getElementById('sandboxAccentRing');
     const sandboxBaseRing = document.getElementById('sandboxBaseRing');
 
-    // Animal Path groups
     const animalPaths = {
         fox: document.getElementById('pathFox'),
         owl: document.getElementById('pathOwl'),
@@ -42,24 +46,91 @@ document.addEventListener('DOMContentLoaded', () => {
         cat: document.getElementById('pathCat')
     };
 
-    // Mockup containers
-    const phoneIconContainer = document.getElementById('phoneIcon');
-    const tshirtGraphicContainer = document.getElementById('tshirtGraphic');
-    const cardLogoContainer = document.getElementById('cardLogo');
+    // DOM Elements - Simulated IDE & Console
+    const simExecute = document.getElementById('simExecute');
+    const simClear = document.getElementById('simClear');
+    const simInject = document.getElementById('simInject');
+    const injectStateDot = document.getElementById('injectStateDot');
+    const injectStateText = document.getElementById('injectStateText');
+    const consoleLogs = document.getElementById('consoleLogs');
+    const clearConsole = document.getElementById('clearConsole');
+    const downloadTrigger = document.getElementById('downloadTrigger');
+    const editorCode = document.getElementById('editorCode');
+    const editorLineNumbers = document.getElementById('editorLineNumbers');
+    const ideTabsList = document.getElementById('ideTabsList');
+    const addNewTabBtn = document.getElementById('addNewTabBtn');
+    const sidebarScriptList = document.getElementById('sidebarScriptList');
 
-    // Initialize
-    function init() {
-        updateCustomizer();
-        updateMockups();
+    // DOM Elements - Script Hub
+    const searchScripts = document.getElementById('searchScripts');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const scriptGrid = document.getElementById('scriptGrid');
+    
+    // Custom Script Form
+    const customScriptName = document.getElementById('customScriptName');
+    const customScriptDesc = document.getElementById('customScriptDesc');
+    const customScriptCategory = document.getElementById('customScriptCategory');
+    const customScriptCode = document.getElementById('customScriptCode');
+    const addCustomScriptBtn = document.getElementById('addCustomScriptBtn');
+
+    // 1. Synth Audio Generation (Web Audio API)
+    function playTone(freq, duration, type = "sine", volume = 0.08) {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            
+            gain.gain.setValueAtTime(volume, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + duration);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start();
+            osc.stop(ctx.currentTime + duration);
+        } catch (e) {
+            // Audio context not allowed or supported
+        }
     }
 
-    // Main Update Function
+    function sweepTone(startFreq, endFreq, duration, volume = 0.08) {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.frequency.setValueAtTime(startFreq, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(endFreq, ctx.currentTime + duration);
+            
+            gain.gain.setValueAtTime(volume, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + duration);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            
+            osc.start();
+            osc.stop(ctx.currentTime + duration);
+        } catch (e) {
+            // Audio context not allowed
+        }
+    }
+
+    // 2. Initial Setup
+    function init() {
+        updateCustomizer();
+        setupScriptHubHandlers();
+        updateLineNumbers();
+        setupEditorListeners();
+    }
+
+    // Main Customizer Update
     function updateCustomizer() {
-        // 1. Update Colors
         document.documentElement.style.setProperty('--accent-color', state.accentColor);
         colorHexLabel.textContent = state.accentColor.toUpperCase();
 
-        // Sync color dots active state
         colorDots.forEach(dot => {
             if (dot.getAttribute('data-color') === state.accentColor) {
                 dot.classList.add('active');
@@ -68,29 +139,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 2. Update Stroke Width
         strokeValLabel.textContent = `${state.strokeWidth}px`;
         sandboxAccentRing.setAttribute('stroke-width', state.strokeWidth);
         sandboxBaseRing.setAttribute('stroke-width', state.strokeWidth);
 
-        // Adjust interior silhouette stroke width proportionally
         const innerStroke = Math.max(4, Math.round(state.strokeWidth * 0.6));
         Object.values(animalPaths).forEach(group => {
-            group.setAttribute('stroke-width', innerStroke);
+            if (group) group.setAttribute('stroke-width', innerStroke);
         });
 
-        // 3. Update Animal Selection
         Object.entries(animalPaths).forEach(([key, element]) => {
-            if (key === state.animal) {
-                element.style.display = 'block';
-            } else {
-                element.style.display = 'none';
+            if (element) {
+                element.style.display = key === state.animal ? 'block' : 'none';
             }
         });
 
-        // 4. Update Fill Badge Style
         if (state.badgeStyle === 'solid') {
-            // solid glass badge look: Fill the accent ring and base ring area
             sandboxAccentRing.setAttribute('fill', state.accentColor);
             sandboxAccentRing.setAttribute('fill-opacity', '0.15');
             sandboxBaseRing.setAttribute('fill', 'var(--base-stroke-color)');
@@ -100,184 +164,428 @@ document.addEventListener('DOMContentLoaded', () => {
             sandboxBaseRing.setAttribute('fill', 'none');
         }
 
-        // 5. Update Glow toggle
         if (state.glowEnabled) {
             svgGlowCircle.style.display = 'block';
-            canvasGlow.style.opacity = '0.2';
         } else {
             svgGlowCircle.style.display = 'none';
-            canvasGlow.style.opacity = '0';
-        }
-
-        // 6. Update Canvas Contrast Theme
-        if (state.canvasTheme === 'light') {
-            logoCanvas.classList.add('light-canvas');
-            document.documentElement.style.setProperty('--base-stroke-color', '#0f172a');
-        } else {
-            logoCanvas.classList.remove('light-canvas');
-            document.documentElement.style.setProperty('--base-stroke-color', '#ffffff');
         }
     }
 
-    // Synchronize modifications to all interactive mockups
-    function updateMockups() {
-        // Clone the configured SVG
-        const logoSVG = sandboxLogo.cloneNode(true);
-        logoSVG.removeAttribute('id');
-        logoSVG.style.width = '100%';
-        logoSVG.style.height = '100%';
+    // 3. Monaco IDE Live Editor Line Numbers
+    function updateLineNumbers() {
+        const text = editorCode.innerText || editorCode.textContent;
+        const linesCount = text.split('\n').length;
         
-        // Resolve inline variables for the mockups to ensure exact presentation
-        const isLight = document.body.classList.contains('light-theme');
-        const computedStyles = getComputedStyle(document.documentElement);
-        const baseColorValue = isLight ? '#0f172a' : '#ffffff';
-        
-        logoSVG.style.setProperty('--accent-color', state.accentColor);
-        logoSVG.style.setProperty('--base-stroke-color', baseColorValue);
-
-        // Render in phone mockup
-        phoneIconContainer.innerHTML = '';
-        phoneIconContainer.appendChild(logoSVG.cloneNode(true));
-
-        // Render in T-shirt mockup (we make it slightly transparent or stylized)
-        tshirtGraphicContainer.innerHTML = '';
-        const tshirtSVG = logoSVG.cloneNode(true);
-        tshirtGraphicContainer.appendChild(tshirtSVG);
-
-        // Render on business card
-        cardLogoContainer.innerHTML = '';
-        const cardSVG = logoSVG.cloneNode(true);
-        // Business card styling specific overrides
-        cardSVG.style.setProperty('--base-stroke-color', '#ffffff'); // Always white on dark card
-        cardLogoContainer.appendChild(cardSVG);
+        let numberHTML = '';
+        for (let i = 1; i <= linesCount; i++) {
+            numberHTML += `<span>${i}</span>`;
+        }
+        editorLineNumbers.innerHTML = numberHTML;
     }
 
-    // EVENT LISTENERS
+    function setupEditorListeners() {
+        editorCode.addEventListener('input', () => {
+            updateLineNumbers();
+            // Save active tab code state
+            tabFiles[activeTabId] = editorCode.innerText;
+        });
 
-    // 1. Animal selection
+        // Setup IDE Tab clicks
+        ideTabsList.addEventListener('click', (e) => {
+            const tab = e.target.closest('.executor-tab');
+            if (tab) {
+                switchTab(tab.getAttribute('data-tab'));
+            }
+        });
+
+        // Setup Sidebar File list click
+        sidebarScriptList.addEventListener('click', (e) => {
+            const item = e.target.closest('li');
+            if (item) {
+                switchTab(item.getAttribute('data-target-tab'));
+            }
+        });
+
+        // Add New Tab Click
+        addNewTabBtn.addEventListener('click', () => {
+            const newTabId = `custom_script_${tabCounter++}`;
+            tabFiles[newTabId] = `-- Custom Script Tab\nprint("Script ${newTabId} executed!")`;
+            
+            // Create DOM elements for Tab Bar
+            const tabSpan = document.createElement('span');
+            tabSpan.className = 'executor-tab';
+            tabSpan.setAttribute('data-tab', newTabId);
+            tabSpan.style.cursor = 'pointer';
+            tabSpan.textContent = `script_${tabCounter - 1}.lua`;
+            ideTabsList.insertBefore(tabSpan, addNewTabBtn);
+
+            // Create DOM element for Sidebar File List
+            const sidebarItem = document.createElement('li');
+            sidebarItem.setAttribute('data-target-tab', newTabId);
+            sidebarItem.textContent = `script_${tabCounter - 1}.lua`;
+            sidebarScriptList.appendChild(sidebarItem);
+
+            switchTab(newTabId);
+            playTone(900, 0.08);
+        });
+    }
+
+    function switchTab(tabId) {
+        if (!tabId || !tabFiles.hasOwnProperty(tabId)) return;
+        
+        // Save current code
+        tabFiles[activeTabId] = editorCode.innerText;
+        
+        // Update active tab ID
+        activeTabId = tabId;
+
+        // Sync Tab UI active classes
+        document.querySelectorAll('.executor-tab').forEach(tab => {
+            if (tab.getAttribute('data-tab') === tabId) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        // Sync Sidebar File active classes
+        document.querySelectorAll('#sidebarScriptList li').forEach(li => {
+            if (li.getAttribute('data-target-tab') === tabId) {
+                li.classList.add('active');
+            } else {
+                li.classList.remove('active');
+            }
+        });
+
+        // Load new code
+        editorCode.innerText = tabFiles[tabId];
+        updateLineNumbers();
+        playTone(600, 0.05);
+    }
+
+    // 4. DLL Injection
+    simInject.addEventListener('click', () => {
+        if (state.isInjected || state.isInjecting) return;
+
+        state.isInjecting = true;
+        injectStateText.textContent = "Injecting...";
+        injectStateDot.style.background = "#f59e0b"; // Yellow
+        
+        appendLog("[System] AeroFox Injector initiated...", "system");
+        sweepTone(300, 900, 0.8);
+        
+        const injectionSteps = [
+            { text: "[System] Locating Roblox target window handles...", delay: 600 },
+            { text: "[System] Hooking memory offsets. Bypassing Roblox anti-cheat...", delay: 1300 },
+            { text: "[System] Preparing scheduler environment...", delay: 2000 },
+            { text: "[System] AeroFox DLL Injected successfully!", delay: 2700 }
+        ];
+
+        injectionSteps.forEach(step => {
+            setTimeout(() => {
+                appendLog(step.text, step.text.includes("successfully") ? "success" : "system");
+                if (step.text.includes("successfully")) {
+                    state.isInjected = true;
+                    state.isInjecting = false;
+                    injectStateText.textContent = "Injected";
+                    injectStateDot.style.background = "#10b981"; // Green
+                    playTone(880, 0.15);
+                    setTimeout(() => playTone(1200, 0.2), 60);
+                } else {
+                    playTone(400, 0.05);
+                }
+            }, step.delay);
+        });
+    });
+
+    // 5. Code Parser Engine
+    simExecute.addEventListener('click', () => {
+        if (!state.isInjected) {
+            appendLog("[Error] Execution failed. You must Inject DLL before executing code!", "error");
+            showToast("Please Inject DLL first!", "#ef4444");
+            playTone(180, 0.35, "sawtooth");
+            return;
+        }
+
+        const rawCode = editorCode.innerText;
+        appendLog("[Executor] Transpiling Lua bytecode...", "system");
+        playTone(880, 0.1);
+        setTimeout(() => playTone(1200, 0.15), 60);
+
+        setTimeout(() => {
+            parseAndSimulateLua(rawCode);
+        }, 350);
+    });
+
+    // Simple Lua syntax regex statement logger
+    function parseAndSimulateLua(code) {
+        const lines = code.split('\n');
+        let matchedOutputs = 0;
+
+        lines.forEach(line => {
+            const trimLine = line.trim();
+            if (trimLine.startsWith('--') || trimLine === '') return; // Skip comments and empty lines
+
+            // 1. Matches print(...) statements
+            const printMatch = trimLine.match(/print\s*\(\s*["'](.*?)["']\s*\)/) || trimLine.match(/print\s*\(\s*(.*?)\s*\)/);
+            if (printMatch) {
+                appendLog(`[Console] ${printMatch[1]}`, "success");
+                matchedOutputs++;
+            }
+
+            // 2. Matches warn(...) statements
+            const warnMatch = trimLine.match(/warn\s*\(\s*["'](.*?)["']\s*\)/);
+            if (warnMatch) {
+                appendLog(`[Warning] ${warnMatch[1]}`, "system");
+                matchedOutputs++;
+            }
+
+            // 3. Matches error(...) statements
+            const errorMatch = trimLine.match(/error\s*\(\s*["'](.*?)["']\s*\)/);
+            if (errorMatch) {
+                appendLog(`[Error] ${errorMatch[1]}`, "error");
+                matchedOutputs++;
+            }
+
+            // 4. Matches loadstring HTTP requests
+            if (trimLine.includes("loadstring") && trimLine.includes("HttpGet")) {
+                appendLog("[Executor] Pulling script source from Cloud Hub API...", "system");
+                matchedOutputs++;
+            }
+        });
+
+        if (matchedOutputs === 0) {
+            appendLog("[Executor] Script executed successfully with 0 output log streams.", "success");
+        }
+    }
+
+    simClear.addEventListener('click', () => {
+        editorCode.innerText = '';
+        tabFiles[activeTabId] = '';
+        updateLineNumbers();
+        appendLog("[Executor] Monaco editor cleared.", "system");
+        playTone(600, 0.05);
+        setTimeout(() => playTone(600, 0.05), 60);
+    });
+
+    // Console logging helpers
+    function appendLog(message, type = "log") {
+        const line = document.createElement('span');
+        line.className = `log-line ${type}`;
+        line.textContent = message;
+        consoleLogs.appendChild(line);
+        consoleLogs.scrollTop = consoleLogs.scrollHeight;
+    }
+
+    clearConsole.addEventListener('click', () => {
+        consoleLogs.innerHTML = '<span class="log-line system">[System] Execution logs cleared.</span>';
+        playTone(500, 0.08);
+    });
+
+    // 6. Script Hub Handlers
+    function setupScriptHubHandlers() {
+        searchScripts.addEventListener('input', filterScripts);
+        categoryFilter.addEventListener('change', filterScripts);
+        bindCardActions(document.querySelectorAll('.script-card'));
+    }
+
+    function filterScripts() {
+        const searchVal = searchScripts.value.toLowerCase();
+        const categoryVal = categoryFilter.value;
+        const cards = scriptGrid.querySelectorAll('.script-card');
+
+        cards.forEach(card => {
+            const name = card.getAttribute('data-name').toLowerCase();
+            const category = card.getAttribute('data-category');
+            
+            const matchSearch = name.includes(searchVal);
+            const matchCategory = categoryVal === 'all' || category === categoryVal;
+
+            if (matchSearch && matchCategory) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function bindCardActions(cards) {
+        cards.forEach(card => {
+            const copyBtn = card.querySelector('.copy-script-btn');
+            const testBtn = card.querySelector('.test-script-btn');
+            const name = card.querySelector('h3').textContent;
+
+            copyBtn.addEventListener('click', () => {
+                const code = copyBtn.getAttribute('data-script');
+                navigator.clipboard.writeText(code).then(() => {
+                    showToast(`Copied ${name} code!`);
+                    playTone(900, 0.1);
+                });
+            });
+
+            testBtn.addEventListener('click', () => {
+                if (!state.isInjected) {
+                    appendLog(`[Error] Failed to run ${name}: Inject DLL first!`, "error");
+                    showToast("Please Inject DLL first!", "#ef4444");
+                    playTone(180, 0.35, "sawtooth");
+                    return;
+                }
+                const resultMessage = testBtn.getAttribute('data-script');
+                appendLog(`[Executor] Fetching source code for ${name}...`, "system");
+                playTone(800, 0.05);
+                setTimeout(() => {
+                    appendLog(`[Executor] Executing: loadstring(...)()`, "system");
+                    appendLog(`[Console] [${name}]: ${resultMessage}`, "success");
+                    playTone(1000, 0.1);
+                }, 400);
+            });
+        });
+    }
+
+    // Publish Custom Scripts to Hub
+    addCustomScriptBtn.addEventListener('click', () => {
+        const name = customScriptName.value.trim();
+        const desc = customScriptDesc.value.trim();
+        const cat = customScriptCategory.value;
+        const code = customScriptCode.value.trim();
+
+        if (!name || !desc || !code) {
+            showToast("Please fill in all script fields!", "#ef4444");
+            playTone(180, 0.35, "sawtooth");
+            return;
+        }
+
+        const card = document.createElement('div');
+        card.className = "glass-card script-card";
+        card.setAttribute('data-category', cat);
+        card.setAttribute('data-name', name.toLowerCase());
+
+        card.innerHTML = `
+            <div class="script-meta-top">
+                <span class="script-tag">${cat.charAt(0).toUpperCase() + cat.slice(1)}</span>
+                <span class="script-downloads">⚡ Local Hub</span>
+            </div>
+            <h3>${name}</h3>
+            <p>${desc}</p>
+            <div class="script-card-actions">
+                <button class="btn btn-secondary btn-sm copy-script-btn" data-script="${code}">Copy Script</button>
+                <button class="btn btn-primary btn-sm test-script-btn" data-script="Custom code executed: ${name}">Test Run</button>
+            </div>
+        `;
+
+        scriptGrid.appendChild(card);
+        bindCardActions([card]);
+
+        customScriptName.value = '';
+        customScriptDesc.value = '';
+        customScriptCode.value = '';
+        
+        showToast(`Successfully published ${name}!`);
+        playTone(880, 0.1);
+        setTimeout(() => playTone(1200, 0.15), 60);
+        filterScripts();
+    });
+
+    // Theme Builder Listeners
     silhouetteButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             silhouetteButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             state.animal = btn.getAttribute('data-animal');
             updateCustomizer();
-            updateMockups();
+            playTone(700, 0.08);
         });
     });
 
-    // 2. Preset Colors
     colorDots.forEach(dot => {
         dot.addEventListener('click', () => {
             state.accentColor = dot.getAttribute('data-color');
             customColorPicker.value = state.accentColor;
             updateCustomizer();
-            updateMockups();
+            playTone(700, 0.08);
         });
     });
 
-    // Custom Color Picker
     customColorPicker.addEventListener('input', (e) => {
         state.accentColor = e.target.value;
         updateCustomizer();
-        updateMockups();
     });
 
-    // 3. Stroke slider
     strokeRange.addEventListener('input', (e) => {
         state.strokeWidth = parseInt(e.target.value);
         updateCustomizer();
-        updateMockups();
     });
 
-    // 4. Style Mode (Solid vs Outline)
     styleToggleButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             styleToggleButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             state.badgeStyle = btn.getAttribute('data-style');
             updateCustomizer();
-            updateMockups();
+            playTone(700, 0.08);
         });
     });
 
-    // 5. Glow toggle
-    glowToggle.addEventListener('change', (e) => {
-        state.glowEnabled = e.target.checked;
-        updateCustomizer();
-        updateMockups();
-    });
-
-    // 6. Canvas Contrast theme selector
-    canvasThemeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            canvasThemeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            state.canvasTheme = btn.getAttribute('data-theme');
-            updateCustomizer();
-            updateMockups();
-        });
-    });
-
-    // 7. Global Header theme toggle (light / dark)
     quickThemeToggle.addEventListener('click', () => {
         document.body.classList.toggle('light-theme');
         updateCustomizer();
-        updateMockups();
+        playTone(600, 0.1);
     });
 
-    // 8. Copy SVG Code Action
     copyCodeBtn.addEventListener('click', () => {
-        const svgClone = sandboxLogo.cloneNode(true);
-        resolveSVGColors(svgClone);
-        
-        const serializer = new XMLSerializer();
-        const svgStr = serializer.serializeToString(svgClone);
+        const isLight = document.body.classList.contains('light-theme');
+        const themeVars = `/* AeroFox Custom Theme Variables */
+:root {
+    --accent-color: ${state.accentColor};
+    --border-weight: ${state.strokeWidth}px;
+    --branding-icon: "${state.animal}";
+    --frosted-badge: ${state.badgeStyle === 'solid' ? 'true' : 'false'};
+    --client-theme: "${isLight ? 'light' : 'dark'}";
+}`;
 
-        navigator.clipboard.writeText(svgStr).then(() => {
-            showToast();
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
+        navigator.clipboard.writeText(themeVars).then(() => {
+            showToast("Theme variables copied to clipboard!");
+            playTone(900, 0.1);
         });
     });
 
-    // 9. Download SVG Action
     downloadLogoBtn.addEventListener('click', () => {
-        const svgClone = sandboxLogo.cloneNode(true);
-        resolveSVGColors(svgClone);
+        const isLight = document.body.classList.contains('light-theme');
+        const configData = {
+            themeName: "AeroFox Custom",
+            accentColor: state.accentColor,
+            borderWeight: state.strokeWidth,
+            logoIcon: state.animal,
+            badgeStyle: state.badgeStyle,
+            isLightTheme: isLight
+        };
 
-        const serializer = new XMLSerializer();
-        let svgStr = serializer.serializeToString(svgClone);
-        
-        // Add default dark styling background to download target for stand-alone correctness
-        svgStr = svgStr.replace('viewBox="0 0 200 200"', 'viewBox="0 0 200 200" style="background:#0f0f13;"');
-
-        const blob = new Blob([svgStr], { type: 'image/svg+xml;charset=utf-8' });
+        const configString = JSON.stringify(configData, null, 4);
+        const blob = new Blob([configString], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `aerofox_${state.animal}_logo.svg`;
+        link.download = "aerofox_theme_config.json";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+        playTone(1000, 0.1);
     });
 
-    // Helpers
-    function resolveSVGColors(svgElement) {
-        // Replaces variables with hardcoded hexes so the SVG displays perfectly on any external viewer
-        const isLight = document.body.classList.contains('light-theme');
-        const baseColorValue = isLight && state.canvasTheme === 'light' ? '#0f172a' : '#ffffff';
-        
-        svgElement.style.setProperty('--accent-color', state.accentColor);
-        svgElement.style.setProperty('--base-stroke-color', baseColorValue);
-    }
-
-    function showToast() {
+    function showToast(message, bgColor = "#10b981") {
+        toast.textContent = message;
+        toast.style.background = bgColor;
         toast.classList.add('show');
         setTimeout(() => {
             toast.classList.remove('show');
         }, 2500);
     }
 
-    // Trigger Initial Setup
+    downloadTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        showToast("Starting AeroFox Bootstrapper.exe download...");
+        playTone(1000, 0.15);
+    });
+
     init();
 });

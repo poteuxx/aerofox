@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AeroFox | Premium Interactive Brand Identity & Sandbox</title>
+    <title>AeroFox Executor | Elite Roblox Script Executor & Script Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,19 +19,19 @@
         <div class="nav-container">
             <div class="logo-area">
                 <svg class="nav-logo" viewBox="0 0 100 100" width="36" height="36">
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="#a855f7" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="0" />
-                    <circle cx="50" cy="50" r="42" fill="none" stroke="#ffffff" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="131" />
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--accent-color)" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="0" />
+                    <circle cx="50" cy="50" r="42" fill="none" stroke="var(--base-stroke-color)" stroke-width="6" stroke-dasharray="131 131" stroke-dashoffset="131" />
                     <!-- Fox Icon -->
-                    <path d="M 34,62 C 32.5,50 40,37.5 46,37.5 L 50,27.5 L 53.5,38 L 59,29 L 61.5,40 C 66,44 76,50 83,54 C 85,55.5 85,56.5 83,57.5 C 76,59 67.5,58 64,57 C 57,56 54,62.5 62.5,69 C 64.5,70.5 62.5,71.5 60,71.5 C 47.5,71.5 39,67.5 34,62" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M 56,48 C 57.5,46 60,46 61.5,48 C 60,50 57.5,50 56,48 Z" fill="#ffffff" />
+                    <path d="M 34,62 C 32.5,50 40,37.5 46,37.5 L 50,27.5 L 53.5,38 L 59,29 L 61.5,40 C 66,44 76,50 83,54 C 85,55.5 85,56.5 83,57.5 C 76,59 67.5,58 64,57 C 57,56 54,62.5 62.5,69 C 64.5,70.5 62.5,71.5 60,71.5 C 47.5,71.5 39,67.5 34,62" fill="none" stroke="var(--base-stroke-color)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 56,48 C 57.5,46 60,46 61.5,48 C 60,50 57.5,50 56,48 Z" fill="var(--base-stroke-color)" />
                 </svg>
                 <span class="brand-name">AERO<span>FOX</span></span>
             </div>
             <div class="nav-links">
-                <a href="#hero">Showcase</a>
-                <a href="#customizer">Interactive Sandbox</a>
-                <a href="#mockups">Live Mockups</a>
-                <a href="#specifications">Guidelines</a>
+                <a href="#hero">Overview</a>
+                <a href="#executor">Executor UI</a>
+                <a href="#scripthub">Script Hub</a>
+                <a href="#theme-builder">Theme Builder</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle-icon" id="quickThemeToggle" title="Toggle Theme">
@@ -39,15 +39,9 @@
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <a href="#customizer" class="btn btn-nav">Launch Editor</a>
+                <a href="#hero" class="btn btn-nav">Download Now</a>
             </div>
         </div>
     </nav>
@@ -56,62 +50,80 @@
     <section id="hero" class="hero-section">
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="badge">Next-Gen Android Aesthetic</div>
-                <h1>Elevated Minimalist <span class="gradient-text">Brand Systems</span></h1>
-                <p class="subtitle">A stunning fusion of clean Android-style geometry, vibrant duotone ring accents, and sharp animal line art. Explore the interactive sandbox to customize, preview on merchandise, and export production-ready vector assets.</p>
+                <div class="badge">Roblox Undetected Executor</div>
+                <h1>Unleash Limitless <span class="gradient-text">Execution Power</span></h1>
+                <p class="subtitle">AeroFox is a state-of-the-art Level 8 Roblox Executor featuring a fully customized Monaco editor, lightning-fast DLL injection, and an integrated cloud-based Script Hub.</p>
+                
                 <div class="hero-actions">
-                    <a href="#customizer" class="btn btn-primary">Open Sandbox</a>
-                    <a href="#mockups" class="btn btn-secondary">Preview Mockups</a>
+                    <a href="#" class="btn btn-primary" id="downloadTrigger">Download AeroFox</a>
+                    <a href="#scripthub" class="btn btn-secondary">Browse Script Hub</a>
                 </div>
+
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-val">4</span>
-                        <span class="stat-label">Vector Silhouettes</span>
+                        <span class="stat-val">99.9%</span>
+                        <span class="stat-label">Uptime & Offsets Auto-Update</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-val">Infinite</span>
-                        <span class="stat-label">Color Schemes</span>
+                        <span class="stat-val">50K+</span>
+                        <span class="stat-label">Supported Cloud Scripts</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-val">100%</span>
-                        <span class="stat-label">SVG Vector Output</span>
+                        <span class="stat-val">Level 8</span>
+                        <span class="stat-label">Execution Environment</span>
                     </div>
                 </div>
             </div>
             <div class="hero-visual">
+                <!-- Glassmorphic Desktop Executor UI Mockup -->
                 <div class="glass-card main-showcase-card">
-                    <div class="tabs-header">
-                        <span class="tab-indicator active" data-tab="modern">AeroFox v2</span>
-                        <span class="tab-indicator" data-tab="concept">Vixen Concept</span>
-                    </div>
-                    <div class="showcase-display">
-                        <!-- Dynamic Premium Logo Showcase -->
-                        <div class="interactive-preview-container" id="mainLogoShowcase">
-                            <!-- We render an animated variant of the logo here -->
-                            <svg viewBox="0 0 200 200" width="100%" height="100%">
-                                <circle cx="100" cy="100" r="85" fill="none" stroke="url(#showcaseGrad)" stroke-width="12" />
-                                <g stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                                    <path d="M 68,125 C 65,100 80,75 92,75 L 100,55 L 107,76 L 118,58 L 123,80 C 132,88 152,100 166,108 C 170,111 170,113 166,115 C 152,118 135,116 128,114 C 114,112 108,125 125,138 C 129,141 125,143 120,143 C 95,143 78,135 68,125" />
-                                    <path d="M 112,96 C 115,92 120,92 123,96 C 120,100 115,100 112,96 Z" fill="#ffffff" stroke="none" />
-                                </g>
-                                <defs>
-                                    <linearGradient id="showcaseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#a855f7" />
-                                        <stop offset="50%" stop-color="#3b82f6" />
-                                        <stop offset="100%" stop-color="#ffffff" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
+                    <div class="tabs-header" style="display: flex; justify-content: flex-start; align-items: center; gap: 15px;">
+                        <div class="window-controls">
+                            <span class="dot-btn close"></span>
+                            <span class="dot-btn min"></span>
+                            <span class="dot-btn max"></span>
+                        </div>
+                        <div class="tabs-row" id="ideTabsList" style="display: flex; gap: 10px; align-items: center;">
+                            <span class="executor-tab active" data-tab="main" style="cursor: pointer;">main.lua</span>
+                            <span class="executor-tab" data-tab="esp" style="cursor: pointer;">esp_aim.lua</span>
+                            <span class="executor-tab" data-tab="fly" style="cursor: pointer;">fly_hack.lua</span>
+                            <span id="addNewTabBtn" style="cursor: pointer; opacity: 0.6; font-size: 0.95rem; font-weight: bold; padding: 0 4px; color: var(--accent-color);">+</span>
                         </div>
                     </div>
-                    <div class="showcase-meta">
-                        <div class="meta-label">
-                            <strong>Signature Badge</strong>
-                            <span>Vector Line Art Geometry</span>
+                    <div class="executor-layout-preview">
+                        <!-- Monaco Code Editor Preview -->
+                        <div class="code-editor-area">
+                            <div class="line-numbers" id="editorLineNumbers">
+                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                            </div>
+                            <div class="code-lines" id="editorCode" contenteditable="true" spellcheck="false" style="flex: 1; padding-left: 12px; outline: none; white-space: pre-wrap; word-break: break-all; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; color: #e2e8f0;">local AeroFox = "Ready!"
+print(AeroFox)
+-- Loaded integrated Cloud Script Hub
+loadstring(game:HttpGet("https://api.aerofox.xyz/hub"))()
+fireclickdetector(workspace.MainPart.ClickDetector)
+setfpscap(240)</div>
+                        </div>
+                        
+                        <!-- Sidebar for script list -->
+                        <div class="executor-sidebar">
+                            <div class="sidebar-title">Local Files</div>
+                            <ul class="script-list" id="sidebarScriptList">
+                                <li class="active" data-target-tab="main">main.lua</li>
+                                <li data-target-tab="esp">esp_aim.lua</li>
+                                <li data-target-tab="fly">fly_hack.lua</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="showcase-meta flex-row">
+                        <div class="executor-actions-row">
+                            <button class="exec-btn exec-primary" id="simExecute">Execute</button>
+                            <button class="exec-btn" id="simClear">Clear</button>
+                            <button class="exec-btn" id="simInject">Inject DLL</button>
                         </div>
                         <div class="pulse-indicator">
-                            <span class="pulse-dot"></span>
-                            <span>Interactive</span>
+                            <span class="pulse-dot" id="injectStateDot"></span>
+                            <span id="injectStateText">Ready</span>
                         </div>
                     </div>
                 </div>
@@ -119,13 +131,136 @@
         </div>
     </section>
 
-    <!-- Sandbox Customizer Section -->
-    <section id="customizer" class="customizer-section">
+    <!-- Simulated Script Hub Section -->
+    <section id="scripthub" class="scripthub-section">
         <div class="container">
             <div class="section-header">
-                <div class="mini-badge">Playground</div>
-                <h2>Interactive Logo Customizer</h2>
-                <p>Swap vector profiles, adjust styles, refine lines, and experience dynamic changes across dark and light palettes.</p>
+                <div class="mini-badge">Script Hub</div>
+                <h2>Explore the Cloud Database</h2>
+                <p>Search, copy, or test premium Roblox scripts directly from the cloud library inside AeroFox.</p>
+            </div>
+
+            <!-- Script Hub Search and Grid -->
+            <div class="scripthub-explorer">
+                <div class="explorer-header">
+                    <input type="text" id="searchScripts" placeholder="Search scripts (e.g. Infinite Yield, Dex, Aimbot)...">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="universal">Universal</option>
+                        <option value="games">Game Specific</option>
+                        <option value="utility">Utility</option>
+                    </select>
+                </div>
+
+                <div class="script-grid" id="scriptGrid">
+                    <!-- Script Card 1 -->
+                    <div class="glass-card script-card" data-category="universal" data-name="infinite yield admin">
+                        <div class="script-meta-top">
+                            <span class="script-tag">Universal</span>
+                            <span class="script-downloads">⚡ 124k</span>
+                        </div>
+                        <h3>Infinite Yield</h3>
+                        <p>The ultimate clean admin commands script containing over 400+ commands for general utility.</p>
+                        <div class="script-card-actions">
+                            <button class="btn btn-secondary btn-sm copy-script-btn" data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()">Copy Script</button>
+                            <button class="btn btn-primary btn-sm test-script-btn" data-script="Infinite Yield loaded successfully! Type ;cmds for utility.">Test Run</button>
+                        </div>
+                    </div>
+
+                    <!-- Script Card 2 -->
+                    <div class="glass-card script-card" data-category="utility" data-name="dark dex explorer">
+                        <div class="script-meta-top">
+                            <span class="script-tag">Utility</span>
+                            <span class="script-downloads">⚡ 85k</span>
+                        </div>
+                        <h3>Dark Dex Explorer</h3>
+                        <p>Advanced workspace and game explorer tree. View game structures, memory values, and assets.</p>
+                        <div class="script-card-actions">
+                            <button class="btn btn-secondary btn-sm copy-script-btn" data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/infypanda/dex/main/darkdex'))()">Copy Script</button>
+                            <button class="btn btn-primary btn-sm test-script-btn" data-script="Dark Dex Explorer initialized. Checking game hierarchical tree.">Test Run</button>
+                        </div>
+                    </div>
+
+                    <!-- Script Card 3 -->
+                    <div class="glass-card script-card" data-category="games" data-name="blox fruits autofarm">
+                        <div class="script-meta-top">
+                            <span class="script-tag">Game Specific</span>
+                            <span class="script-downloads">⚡ 94k</span>
+                        </div>
+                        <h3>Blox Fruits Autofarm</h3>
+                        <p>Complete auto-quest helper, autofarm levels, auto-stats, chest collections, and teleport options.</p>
+                        <div class="script-card-actions">
+                            <button class="btn btn-secondary btn-sm copy-script-btn" data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/blox-fruits/farm/main/load.lua'))()">Copy Script</button>
+                            <button class="btn btn-primary btn-sm test-script-btn" data-script="Blox Fruits Autofarm loaded. Initializing NPC Quest Farming loop.">Test Run</button>
+                        </div>
+                    </div>
+
+                    <!-- Script Card 4 -->
+                    <div class="glass-card script-card" data-category="universal" data-name="esp aimbot pro">
+                        <div class="script-meta-top">
+                            <span class="script-tag">Universal</span>
+                            <span class="script-downloads">⚡ 150k</span>
+                        </div>
+                        <h3>ESP & Aimbot Pro</h3>
+                        <p>Fully configurable bounding-box ESP, smooth tracking aimbot, snaplines, and customizable FOV circle.</p>
+                        <div class="script-card-actions">
+                            <button class="btn btn-secondary btn-sm copy-script-btn" data-script="loadstring(game:HttpGet('https://raw.githubusercontent.com/aimbot/pro/main/source.lua'))()">Copy Script</button>
+                            <button class="btn btn-primary btn-sm test-script-btn" data-script="Universal Aimbot & ESP loaded. Drawing canvas FOV boundary.">Test Run</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Script Creator Form -->
+                <div class="glass-card script-creator-card" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Add Custom Script to Hub</h3>
+                    <div class="creator-form-grid">
+                        <div class="form-group">
+                            <label for="customScriptName">Script Name</label>
+                            <input type="text" id="customScriptName" placeholder="e.g. Speed Simulator Auto-Win">
+                        </div>
+                        <div class="form-group">
+                            <label for="customScriptDesc">Description</label>
+                            <input type="text" id="customScriptDesc" placeholder="Briefly describe what this script does...">
+                        </div>
+                        <div class="form-row-2">
+                            <div class="form-group">
+                                <label for="customScriptCategory">Category</label>
+                                <select id="customScriptCategory">
+                                    <option value="universal">Universal</option>
+                                    <option value="games">Game Specific</option>
+                                    <option value="utility">Utility</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="customScriptCode">Lua Source Code</label>
+                                <input type="text" id="customScriptCode" placeholder="loadstring(game:HttpGet(...))()">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="addCustomScriptBtn" style="margin-top: 5px; width: 100%;">Publish to Local Hub</button>
+                </div>
+
+                <!-- Simulation Output Box -->
+                <div class="glass-card console-output-card">
+                    <div class="console-header">
+                        <span>AeroFox Execution Console</span>
+                        <button class="console-clear-btn" id="clearConsole">Clear Logs</button>
+                    </div>
+                    <div class="console-logs" id="consoleLogs">
+                        <span class="log-line system">[System] AeroFox V2 ready. Tap "Test Run" on any script to simulate execution...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme Customizer Section -->
+    <section id="theme-builder" class="customizer-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="mini-badge">Styling</div>
+                <h2>AeroFox Custom Theme Builder</h2>
+                <p>Customize the accent colors, stroke weights, and themes of the AeroFox launcher and app. Export your config directly.</p>
             </div>
 
             <div class="customizer-layout">
@@ -145,7 +280,7 @@
                                 <!-- Glow Background -->
                                 <circle id="svgGlowCircle" cx="100" cy="100" r="95" fill="url(#neonRadial)" opacity="0.8" style="transition: all 0.3s;" />
                                 
-                                <!-- Outer Ring Split (Standard split or customizable) -->
+                                <!-- Outer Ring Split -->
                                 <path id="sandboxAccentRing" d="M 20,100 A 80,80 0 1,1 180,100" fill="none" stroke="var(--accent-color)" stroke-width="12" stroke-linecap="round" style="transition: stroke 0.3s, stroke-width 0.2s;" />
                                 <path id="sandboxBaseRing" d="M 180,100 A 80,80 0 0,1 20,100" fill="none" stroke="var(--base-stroke-color)" stroke-width="12" stroke-linecap="round" style="transition: stroke 0.3s, stroke-width 0.2s;" />
 
@@ -157,44 +292,35 @@
                                         <path d="M 112,96 C 115,92 120,92 123,96 C 120,100 115,100 112,96 Z" fill="var(--base-stroke-color)" stroke="none" />
                                     </g>
                                     
-                                    <!-- Owl Path (Hidden by default) -->
+                                    <!-- Owl Path -->
                                     <g id="pathOwl" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
-                                        <!-- Owl facial contours -->
                                         <path d="M 70,80 C 70,60 85,50 100,50 C 115,50 130,60 130,80" />
                                         <path d="M 70,80 C 70,110 85,125 100,125 C 115,125 130,110 130,80" />
-                                        <!-- Eyes -->
                                         <circle cx="88" cy="85" r="10" />
                                         <circle cx="88" cy="85" r="4" fill="var(--base-stroke-color)" />
                                         <circle cx="112" cy="85" r="10" />
                                         <circle cx="112" cy="85" r="4" fill="var(--base-stroke-color)" />
-                                        <!-- Beak -->
                                         <path d="M 100,90 L 96,102 L 104,102 Z" fill="var(--base-stroke-color)" />
-                                        <!-- Feather tufts -->
                                         <path d="M 75,55 L 63,42 L 80,50" />
                                         <path d="M 125,55 L 137,42 L 120,50" />
                                     </g>
 
-                                    <!-- Wolf Path (Hidden by default) -->
+                                    <!-- Wolf Path -->
                                     <g id="pathWolf" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
-                                        <!-- Geometric/Sharp Wolf -->
                                         <path d="M 55,100 L 75,60 L 95,50 L 110,65 L 135,55 L 130,80" />
                                         <path d="M 130,80 L 155,95 L 140,105 L 115,105 L 85,135 L 55,100 Z" />
-                                        <!-- Eye -->
                                         <polygon points="105,78 115,75 112,83" fill="var(--base-stroke-color)" stroke="none" />
                                     </g>
 
-                                    <!-- Cyber Cat Path (Hidden by default) -->
+                                    <!-- Cyber Cat Path -->
                                     <g id="pathCat" stroke="var(--base-stroke-color)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" style="display: none;">
                                         <path d="M 60,120 C 60,90 75,70 100,70 C 125,70 140,90 140,120" />
-                                        <!-- Pointy ears -->
                                         <path d="M 75,73 L 65,40 L 90,68" />
                                         <path d="M 125,73 L 135,40 L 110,68" />
-                                        <!-- Whiskers -->
                                         <path d="M 50,110 L 80,112" />
                                         <path d="M 48,122 L 78,120" />
                                         <path d="M 150,110 L 120,112" />
                                         <path d="M 152,122 L 122,120" />
-                                        <!-- Glowing slit eyes -->
                                         <ellipse cx="88" cy="90" rx="8" ry="4" />
                                         <ellipse cx="112" cy="90" rx="8" ry="4" />
                                         <line x1="88" y1="86" x2="88" y2="94" stroke-width="3" />
@@ -208,11 +334,11 @@
 
                 <!-- Customizer Sidebar / Controls -->
                 <div class="glass-card controls-wrapper">
-                    <h3>Visual Configuration</h3>
+                    <h3>UI Color & Customization</h3>
                     
                     <!-- 1. Select Silhouette -->
                     <div class="control-group">
-                        <label>Vector Silhouette</label>
+                        <label>Application Branding Icon</label>
                         <div class="silhouette-options">
                             <button class="silhouette-btn active" data-animal="fox">Fox</button>
                             <button class="silhouette-btn" data-animal="owl">Owl</button>
@@ -221,10 +347,10 @@
                         </div>
                     </div>
 
-                    <!-- 2. Accent Ring Color -->
+                    <!-- 2. Accent Color -->
                     <div class="control-group">
                         <label>
-                            <span>Accent Color</span>
+                            <span>Client Accent Color</span>
                             <span class="value-indicator" id="colorHex">#a855f7</span>
                         </label>
                         <div class="color-options-row">
@@ -245,7 +371,7 @@
                     <!-- 3. Line Weight -->
                     <div class="control-group">
                         <label>
-                            <span>Border Stroke Weight</span>
+                            <span>Borders & Separator Weight</span>
                             <span class="value-indicator" id="strokeValLabel">12px</span>
                         </label>
                         <input type="range" id="strokeRange" min="6" max="22" value="12">
@@ -253,144 +379,18 @@
 
                     <!-- 4. Style Mode (Outline vs Solid Badge) -->
                     <div class="control-group">
-                        <label>Badge Fill Style</label>
+                        <label>Client Theme Style</label>
                         <div class="style-toggle-buttons">
-                            <button class="style-toggle-btn active" data-style="outline">Outline Badge</button>
-                            <button class="style-toggle-btn" data-style="solid">Solid Glass Badge</button>
-                        </div>
-                    </div>
-
-                    <!-- 5. Interactive Glow & Contrast Options -->
-                    <div class="row-controls">
-                        <div class="control-group flex-1">
-                            <label>Neon Ambient Glow</label>
-                            <label class="switch">
-                                <input type="checkbox" id="glowOptionToggle" checked>
-                                <span class="slider"></span>
-                            </label>
-                        </div>
-                        <div class="control-group flex-1">
-                            <label>Canvas Mode</label>
-                            <div class="canvas-theme-toggle">
-                                <button class="canvas-theme-btn active" data-theme="dark" title="Dark Contrast">Dark</button>
-                                <button class="canvas-theme-btn" data-theme="light" title="Light Contrast">Light</button>
-                            </div>
+                            <button class="style-toggle-btn active" data-style="outline">Vibrant Neon</button>
+                            <button class="style-toggle-btn" data-style="solid">Frosted Glass</button>
                         </div>
                     </div>
 
                     <!-- Actions -->
                     <div class="action-buttons-group">
-                        <button class="btn btn-primary" id="downloadLogoBtn">Download SVG</button>
-                        <button class="btn btn-secondary" id="copyCodeBtn">Copy SVG Code</button>
+                        <button class="btn btn-primary" id="downloadLogoBtn">Download Config</button>
+                        <button class="btn btn-secondary" id="copyCodeBtn">Copy Theme CSS</button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mockups & Products Showcase -->
-    <section id="mockups" class="mockups-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="mini-badge">Integration</div>
-                <h2>Dynamic Product Applications</h2>
-                <p>Watch the mockups update in real-time as you customize the logo style above.</p>
-            </div>
-
-            <div class="mockup-grid">
-                <!-- Mobile Screen Mockup -->
-                <div class="glass-card mockup-card">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Android Launcher Icon</span>
-                        <span class="mockup-dot"></span>
-                    </div>
-                    <div class="mockup-body phone-bg">
-                        <div class="mockup-phone">
-                            <div class="phone-status-bar">
-                                <span>09:41</span>
-                                <div class="status-icons">📶 🔋</div>
-                            </div>
-                            <div class="launcher-grid">
-                                <div class="launcher-item">
-                                    <div class="dynamic-icon-preview" id="phoneIcon">
-                                        <!-- Render custom SVG icon here -->
-                                    </div>
-                                    <span class="icon-label">AeroFox</span>
-                                </div>
-                                <div class="launcher-item dummy">
-                                    <div class="dummy-icon" style="background: #2563eb;">💬</div>
-                                    <span class="icon-label">Chat</span>
-                                </div>
-                                <div class="launcher-item dummy">
-                                    <div class="dummy-icon" style="background: #059669;">📸</div>
-                                    <span class="icon-label">Camera</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Premium Apparel Mockup -->
-                <div class="glass-card mockup-card">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Minimalist Streetwear</span>
-                        <span class="mockup-dot"></span>
-                    </div>
-                    <div class="mockup-body apparel-bg">
-                        <div class="tshirt-texture">
-                            <div class="dynamic-graphic-preview" id="tshirtGraphic">
-                                <!-- Dynamic Graphic Overlay -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Brand Card Mockup -->
-                <div class="glass-card mockup-card full-width-mockup">
-                    <div class="mockup-header">
-                        <span class="mockup-title">Smart NFC Business Card</span>
-                        <span class="mockup-dot"></span>
-                    </div>
-                    <div class="mockup-body card-bg">
-                        <div class="nfc-card" id="nfcCardDisplay">
-                            <div class="card-logo-area" id="cardLogo">
-                                <!-- Dynamic Logo -->
-                            </div>
-                            <div class="card-details">
-                                <span class="card-brand">AEROFOX LABS</span>
-                                <span class="card-nfc-label">NFC Tap to Scan</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Specifications / Grid Guidelines -->
-    <section id="specifications" class="specs-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="mini-badge">System</div>
-                <h2>Geometry & Specifications</h2>
-                <p>Strict rules governing the AeroFox visual design system.</p>
-            </div>
-
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <div class="spec-icon">📐</div>
-                    <h4>Angle Split Rules</h4>
-                    <p>Accent ring covers exactly 180 degrees of the upper arc (from 9 o'clock to 3 o'clock) mirroring Android's visual system state division.</p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-icon">⚡</div>
-                    <h4>Golden Curve Ratio</h4>
-                    <p>Line-art profile features bezier handles matching the exact Golden Ratio (1:1.618) to ensure smooth curve progression under low-resolution scaling.</p>
-                </div>
-                <div class="spec-card">
-                    <div class="spec-icon">👁️</div>
-                    <h4>Focal Anchoring</h4>
-                    <p>The creature's eye detail sits perfectly on the 100px vertical center and 110px horizontal axis coordinates to anchor user attention.</p>
                 </div>
             </div>
         </div>
@@ -401,18 +401,19 @@
         <div class="container footer-container">
             <div class="footer-left">
                 <span class="footer-logo">AERO<span>FOX</span></span>
-                <p>Next-gen design systems for modern digital ecosystems.</p>
+                <p>Next-generation execution and tools for sandbox gaming. AeroFox is not affiliated with Roblox Corporation.</p>
             </div>
             <div class="footer-right">
                 <a href="#hero">Top</a>
-                <a href="#customizer">Customizer</a>
-                <a href="https://github.com/poteuxx/aerofox" target="_blank">GitHub Repository</a>
+                <a href="#scripthub">Script Hub</a>
+                <a href="#theme-builder">Theme Builder</a>
+                <a href="https://github.com/poteuxx/aerofox" target="_blank">GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- Toast Notification for Copy Code -->
-    <div id="toastNotification" class="toast">Code copied to clipboard!</div>
+    <!-- Toast Notification for Actions -->
+    <div id="toastNotification" class="toast">Action completed!</div>
 
     <script src="script.js"></script>
 </body>
