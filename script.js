@@ -472,6 +472,28 @@ document.addEventListener('DOMContentLoaded', () => {
         filterScripts();
     });
 
+    // Showcase Nav Toggle (IDE vs Logo Image)
+    const showcaseNavBtns = document.querySelectorAll('.showcase-nav-btn');
+    const paneIDE = document.getElementById('paneIDE');
+    const paneLogo = document.getElementById('paneLogo');
+
+    showcaseNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            showcaseNavBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const target = btn.getAttribute('data-showcase');
+            if (target === 'logo') {
+                paneIDE.style.display = 'none';
+                paneLogo.style.display = 'block';
+            } else {
+                paneIDE.style.display = 'block';
+                paneLogo.style.display = 'none';
+            }
+            playTone(700, 0.05);
+        });
+    });
+
     // Theme Builder Listeners
     colorDots.forEach(dot => {
         dot.addEventListener('click', () => {

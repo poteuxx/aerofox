@@ -75,55 +75,73 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <!-- Glassmorphic Desktop Executor UI Mockup -->
+                <!-- Dual-Tab Card Container -->
                 <div class="glass-card main-showcase-card">
-                    <div class="tabs-header" style="display: flex; justify-content: flex-start; align-items: center; gap: 15px;">
-                        <div class="window-controls">
-                            <span class="dot-btn close"></span>
-                            <span class="dot-btn min"></span>
-                            <span class="dot-btn max"></span>
-                        </div>
-                        <div class="tabs-row" id="ideTabsList" style="display: flex; gap: 10px; align-items: center;">
-                            <span class="executor-tab active" data-tab="main" style="cursor: pointer;">main.lua</span>
-                            <span class="executor-tab" data-tab="esp" style="cursor: pointer;">esp_aim.lua</span>
-                            <span class="executor-tab" data-tab="fly" style="cursor: pointer;">fly_hack.lua</span>
-                            <span id="addNewTabBtn" style="cursor: pointer; opacity: 0.6; font-size: 0.95rem; font-weight: bold; padding: 0 4px; color: var(--accent-color);">+</span>
-                        </div>
+                    <div class="showcase-tabs-nav" style="display: flex; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid var(--current-border); padding-bottom: 12px;">
+                        <button class="showcase-nav-btn active" data-showcase="ide" style="background: none; border: none; color: var(--current-text); font-weight: 700; cursor: pointer; font-size: 0.9rem; opacity: 0.6; transition: opacity 0.2s;">Executor IDE</button>
+                        <button class="showcase-nav-btn" data-showcase="logo" style="background: none; border: none; color: var(--current-text); font-weight: 700; cursor: pointer; font-size: 0.9rem; opacity: 0.6; transition: opacity 0.2s;">App Icon Design</button>
                     </div>
-                    <div class="executor-layout-preview">
-                        <!-- Monaco Code Editor Preview -->
-                        <div class="code-editor-area">
-                            <div class="line-numbers" id="editorLineNumbers">
-                                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+
+                    <!-- Mode 1: Monaco Code Editor -->
+                    <div class="showcase-content-pane" id="paneIDE">
+                        <div class="tabs-header" style="display: flex; justify-content: flex-start; align-items: center; gap: 15px; margin-bottom: 10px;">
+                            <div class="window-controls">
+                                <span class="dot-btn close"></span>
+                                <span class="dot-btn min"></span>
+                                <span class="dot-btn max"></span>
                             </div>
-                            <div class="code-lines" id="editorCode" contenteditable="true" spellcheck="false" style="flex: 1; padding-left: 12px; outline: none; white-space: pre-wrap; word-break: break-all; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; color: #e2e8f0;">local AeroFox = "Ready!"
+                            <div class="tabs-row" id="ideTabsList" style="display: flex; gap: 10px; align-items: center;">
+                                <span class="executor-tab active" data-tab="main" style="cursor: pointer;">main.lua</span>
+                                <span class="executor-tab" data-tab="esp" style="cursor: pointer;">esp_aim.lua</span>
+                                <span class="executor-tab" data-tab="fly" style="cursor: pointer;">fly_hack.lua</span>
+                                <span id="addNewTabBtn" style="cursor: pointer; opacity: 0.6; font-size: 0.95rem; font-weight: bold; padding: 0 4px; color: var(--accent-color);">+</span>
+                            </div>
+                        </div>
+                        <div class="executor-layout-preview">
+                            <!-- Monaco Code Editor Preview -->
+                            <div class="code-editor-area">
+                                <div class="line-numbers" id="editorLineNumbers">
+                                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                                </div>
+                                <div class="code-lines" id="editorCode" contenteditable="true" spellcheck="false" style="flex: 1; padding-left: 12px; outline: none; white-space: pre-wrap; word-break: break-all; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.5; color: #e2e8f0;">local AeroFox = "Ready!"
 print(AeroFox)
 -- Loaded integrated Cloud Script Hub
 loadstring(game:HttpGet("https://api.aerofox.xyz/hub"))()
 fireclickdetector(workspace.MainPart.ClickDetector)
 setfpscap(240)</div>
+                            </div>
+                            
+                            <!-- Sidebar for script list -->
+                            <div class="executor-sidebar">
+                                <div class="sidebar-title">Local Files</div>
+                                <ul class="script-list" id="sidebarScriptList">
+                                    <li class="active" data-target-tab="main">main.lua</li>
+                                    <li data-target-tab="esp">esp_aim.lua</li>
+                                    <li data-target-tab="fly">fly_hack.lua</li>
+                                </ul>
+                            </div>
                         </div>
-                        
-                        <!-- Sidebar for script list -->
-                        <div class="executor-sidebar">
-                            <div class="sidebar-title">Local Files</div>
-                            <ul class="script-list" id="sidebarScriptList">
-                                <li class="active" data-target-tab="main">main.lua</li>
-                                <li data-target-tab="esp">esp_aim.lua</li>
-                                <li data-target-tab="fly">fly_hack.lua</li>
-                            </ul>
+                        <div class="showcase-meta flex-row" style="margin-top: 15px;">
+                            <div class="executor-actions-row">
+                                <button class="exec-btn exec-primary" id="simExecute">Execute</button>
+                                <button class="exec-btn" id="simClear">Clear</button>
+                                <button class="exec-btn" id="simInject">Inject DLL</button>
+                            </div>
+                            <div class="pulse-indicator">
+                                <span class="pulse-dot" id="injectStateDot"></span>
+                                <span id="injectStateText">Ready</span>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="showcase-meta flex-row">
-                        <div class="executor-actions-row">
-                            <button class="exec-btn exec-primary" id="simExecute">Execute</button>
-                            <button class="exec-btn" id="simClear">Clear</button>
-                            <button class="exec-btn" id="simInject">Inject DLL</button>
+
+                    <!-- Mode 2: Selected Logo Image Display -->
+                    <div class="showcase-content-pane" id="paneLogo" style="display: none;">
+                        <div class="logo-display-wrapper" style="position: relative; width: 100%; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: #0c0c10; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.05);">
+                            <img src="vixen_fox_logo_1782631615289.jpg" alt="AeroFox Selected Logo" class="generated-logo-img" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
-                        <div class="pulse-indicator">
-                            <span class="pulse-dot" id="injectStateDot"></span>
-                            <span id="injectStateText">Ready</span>
+                        <div class="showcase-meta" style="margin-top: 15px; display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--current-muted);">
+                            <span>Branding Core Asset</span>
+                            <span>vixen_fox_logo.jpg</span>
                         </div>
                     </div>
                 </div>

@@ -1374,3 +1374,11 @@ footer {
     gap: 12px;
 }
 
+/* Showcase Toggle Tabs Navigation */
+.showcase-nav-btn.active {
+    opacity: 1 !important;
+    color: var(--accent-color) !important;
+    border-bottom: 2px solid var(--accent-color) !important;
+}
+
+
