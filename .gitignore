@@ -1,0 +1,9 @@
+.system_generated/
+*.metadata.json
+walkthrough.md
+walkthrough.md.metadata.json
+task.md
+task.md.metadata.json
+implementation_plan.md
+implementation_plan.md.metadata.json
+scratch/
